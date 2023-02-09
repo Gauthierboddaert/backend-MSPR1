@@ -33,7 +33,7 @@ class HttpClientManager
             $this->baseApiUrl.$endPoint.'/'.$id
         );
 
-        if($response->getStatusCode() === 500 || 400){
+        if($response->getStatusCode() === 500 || $response->getStatusCode() === 400 ){
             return [$messageError];
         };
 
