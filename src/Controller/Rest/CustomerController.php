@@ -21,6 +21,12 @@ class CustomerController extends AbstractController
     #[Route('/', name: 'app_customers', methods: 'GET')]
     public function index() : JsonResponse
     {
-        return new JsonResponse($this->httpClientManager->getProductInformation('/customers'));
+        return new JsonResponse($this->httpClientManager->getALlInformation('/customers'));
+    }
+
+    #[Route('/{id}', name: 'app_customers_by_id', methods: 'GET')]
+    public function getCustomersById(int $id) : JsonResponse
+    {
+        return new JsonResponse($this->httpClientManager->getInformationById('/customers', $id, 'Client introuvable'));
     }
 }

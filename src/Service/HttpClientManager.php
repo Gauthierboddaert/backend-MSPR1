@@ -15,13 +15,28 @@ class HttpClientManager
         $this->baseApiUrl = $baseApiUrl;
     }
 
-    public function getProductInformation(string $endPoint): array
+    public function getALlInformation(string $endPoint): array
     {
 
         $response = $this->client->request(
             'GET',
             $this->baseApiUrl.$endPoint
         );
+
+        return $response->toArray();
+    }
+
+    public function getInformationById(string $endPoint, int $id, string $messageError = 'produit introuvable'): array
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->baseApiUrl.$endPoint.'/'.$id
+        );
+
+        if($response->getStatusCode() === 500 || 400){
+            return [$messageError];
+        };
+
 
         return $response->toArray();
     }
