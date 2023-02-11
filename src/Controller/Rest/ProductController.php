@@ -27,6 +27,6 @@ class ProductController extends AbstractController
     #[Route('/{id}', name: 'app_product_by_id', methods: 'GET')]
     public function getProductById(int $id) : JsonResponse
     {
-        return new JsonResponse($this->httpClientManager->getInformationById('/products', 1));
+        return new JsonResponse($this->httpClientManager->getInformationById('/products', $id));
     }
 }

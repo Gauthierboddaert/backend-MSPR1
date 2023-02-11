@@ -3,24 +3,29 @@
 namespace App\Controller\Rest;
 
 use App\Service\HttpClientManager;
+use App\Service\MailerManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api/customers')]
 class CustomerController extends AbstractController
 {
     private HttpClientManager $httpClientManager;
+    private MailerManager $mailerManager;
 
-    public function __construct(HttpClientManager $httpClientManager)
+    public function __construct(HttpClientManager $httpClientManager, MailerManager $mailerManager)
     {
         $this->httpClientManager = $httpClientManager;
+        $this->mailerManager = $mailerManager;
     }
 
     #[Route('/', name: 'app_customers', methods: 'GET')]
-    public function index() : JsonResponse
+    public function index(MailerInterface $mailer) : JsonResponse
     {
+        $this->mailerManager->sendEmail($mailer);
         return new JsonResponse($this->httpClientManager->getALlInformation('/customers'));
     }
 
