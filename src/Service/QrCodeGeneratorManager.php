@@ -19,8 +19,6 @@ class QrCodeGeneratorManager
     {
         $qrCode = $this->generateQrCode();
         $response = new QrCodeResponse($qrCode);
-
-        dd($response);
     }
 
     public function generateQrCode() : PngResult
