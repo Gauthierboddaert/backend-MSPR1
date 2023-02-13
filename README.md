@@ -15,8 +15,8 @@
   Voici un exemple de fichier : 
 
 ```txt
-DATABASE_URL="mysql://root:@127.0.0.1:3306/cook?serverVersion=5.7"
-MAILER_DNS= https://localhost:1025
+ DATABASE_URL="mysql://root:@127.0.0.1:3306/cook?serverVersion=5.7"
+ MAILER_DNS= https://localhost:1025
 ```
 
 ## Récuperer la data de l'api pour remplir la table user
