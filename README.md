@@ -1,7 +1,8 @@
 # Require
 
-- Symfony
+- Symfony 6.1
 - Php 8.1
+- Composer
 - Mailer (mailHog : https://github.com/mailhog/MailHog/releases)
 
 ## Getting started
