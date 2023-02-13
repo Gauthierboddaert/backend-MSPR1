@@ -2,7 +2,7 @@
 
 - Symfony
 - Php 8.1
-- Mailer (mailHog)
+- Mailer (mailHog : https://github.com/mailhog/MailHog/releases)
 
 ## Getting started
 
