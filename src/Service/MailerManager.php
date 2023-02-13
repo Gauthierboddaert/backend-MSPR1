@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +18,7 @@ class MailerManager extends AbstractController
         $this->qrCodeGeneratorManager = $qrCodeGeneratorManager;
     }
 
-    public function sendEmail(MailerInterface $mailer): void
+    public function sendEmail(MailerInterface $mailer, User $user): void
     {
         $email = (new Email())
             ->from('hello@gmail.com')
@@ -26,7 +27,7 @@ class MailerManager extends AbstractController
             ->text('Sending emails is fun again!')
             ->html($this->renderView(
                 'email/login_email.html.twig',
-                array('qrcode' => $this->qrCodeGeneratorManager->generateQrCode())
+                array('qrcode' => $this->qrCodeGeneratorManager->generateQrCode($user))
             ));
 
         $mailer->send($email);
