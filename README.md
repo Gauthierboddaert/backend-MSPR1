@@ -9,7 +9,7 @@
 - Clone the project
 - Créer votre db (php bin/console d:d:c)
 - Créer les migrations (php bin/console make:migration)
-- Lancer les migration (php bin/console d:m:m)
+- Lancer les migration (php bin/console doctrine:make:migrations)
 
 
 ## Récuperer la data de l'api pour remplir la table user
