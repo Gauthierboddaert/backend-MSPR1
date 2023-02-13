@@ -12,7 +12,7 @@
 - Lancer les migration (php bin/console doctrine:make:migrations)
 - Créer un fichier .env.local
  
-  Voici un exemple de fichier : 
+  Voici un exemple de fichier .env.local: 
 
 ```txt
  DATABASE_URL="mysql://root:@127.0.0.1:3306/cook?serverVersion=5.7"
