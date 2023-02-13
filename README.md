@@ -18,7 +18,7 @@
 
 ```txt
  DATABASE_URL="mysql://root:@127.0.0.1:3306/cook?serverVersion=5.7"
- MAILER_DSN="https://localhost:8025"
+ MAILER_DSN=smtp://localhost:1025/
 ```
 
 ## Récuperer la data de l'api pour remplir la table user
