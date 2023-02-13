@@ -29,7 +29,9 @@
 
 - configurer le port smtp  dans le fichier .env.local, la variable d'environnement est MAILER_DNS (il faut le créer)
 - lancer les workers, il faut les lancer car les mails sont asynchrones 
+- 
 - ```txt
   php bin/console messenger:consume async -vv
 ```
+
 - lancer votre mailer, si vous utilisez mailHog il faut seulement écrire mailhog dans le terminal.
