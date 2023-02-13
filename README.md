@@ -34,7 +34,7 @@ Symfony serve (il faut installer le cli symfony)
 
 - lancer la command php : 
 ```txt
-   bin/console app:import-user 
+  php bin/console app:import-user 
 ```
 
 ## Recevoir les mails en local
@@ -44,5 +44,4 @@ Symfony serve (il faut installer le cli symfony)
  ```txt
   php bin/console messenger:consume async -vv
 ```
-
 - lancer votre mailer, si vous utilisez mailHog il faut seulement écrire mailhog dans le terminal.
