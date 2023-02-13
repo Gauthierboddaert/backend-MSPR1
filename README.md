@@ -12,6 +12,7 @@
 - Créer les migrations (php bin/console make:migration)
 - Lancer les migration (php bin/console doctrine:make:migrations)
 - Créer un fichier .env.local
+- Lancer le serveur : Symfony serve (il faut installer le cli symfony)
  
   Voici un exemple de fichier .env.local: 
 
