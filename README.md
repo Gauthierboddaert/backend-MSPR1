@@ -9,10 +9,19 @@
 
 - Clone the project
 - Créer votre db (php bin/console d:d:c)
-- Créer les migrations (php bin/console make:migration)
-- Lancer les migration (php bin/console doctrine:make:migrations)
+- Créer les migrations 
+ ```txt
+php bin/console make:migration
+```
+- Lancer les migration 
+ ```txt
+php bin/console doctrine:make:migrations
+```
 - Créer un fichier .env.local
-- Lancer le serveur : Symfony serve (il faut installer le cli symfony)
+- Lancer le serveur :
+```txt
+Symfony serve (il faut installer le cli symfony)
+``` 
  
   Voici un exemple de fichier .env.local: 
 
@@ -23,7 +32,10 @@
 
 ## Récuperer la data de l'api pour remplir la table user
 
-- lancer la command php bin/console app:import-user 
+- lancer la command php : 
+```txt
+   bin/console app:import-user 
+```
 
 ## Recevoir les mails en local
 
