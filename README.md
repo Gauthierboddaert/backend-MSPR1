@@ -1,13 +1,17 @@
 # Require
 
-- Symfony 6.1
-- Php 8.1
-- Composer
+- Symfony 6.1 (https://symfony.com/download)
+- Php 8.1 (installer Wamp pour le moment, on va passer sous docker pe)
+- Composer (Composer : https://getcomposer.org/download/)
 - Mailer (mailHog : https://github.com/mailhog/MailHog/releases)
 
 ## Getting started
 
 - Clone the project
+- Lancer la commande : 
+```txt
+ composer install
+```
 - Créer votre db (php bin/console d:d:c)
 - Créer les migrations 
  ```txt
