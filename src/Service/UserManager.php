@@ -41,7 +41,7 @@ class UserManager
                 $lastName = $user['lastName'] ?? '';
                 $user = new User();
                 $user->setPassword($this->userPasswordHasher->hashPassword($user,'coucou'));
-                $user->setRoles(['IS_AUTHENTICATED_FULLY']);
+                $user->setRoles(['PUBLIC_ACCESS']);
                 $user->setCompagnyName($cp);
                 $user->setCreatedAt(new \DateTimeImmutable());
                 $user->setEmail($email);
