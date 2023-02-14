@@ -2,32 +2,32 @@
 
 namespace App\Service;
 
+use App\Entity\User;
+use Endroid\QrCode\Factory\QrCodeFactoryInterface;
+use App\Repository\UserRepository;
 use Endroid\QrCode\Builder\BuilderInterface;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\Result\PngResult;
 use Endroid\QrCodeBundle\Response\QrCodeResponse;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class QrCodeGeneratorManager
 {
-    private BuilderInterface $builder;
+    private SerializerInterface $serializer;
 
-    public function __construct(BuilderInterface $builder)
+    public function __construct(UserRepository $userRepository, SerializerInterface $serializer)
     {
-        $this->builder = $builder;
+        $this->serializer = $serializer;
     }
 
-    public function getQrCodeAuthentication()
+    public function generateQrCode(User $user)
     {
-        $qrCode = $this->generateQrCode();
-        $response = new QrCodeResponse($qrCode);
+        $qrCode = new QrCode($this->serializer->serialize($user, 'json', ['groups' => 'user']));
+        $qrCode->setSize(300);
+        $qrCode->setEncoding(new Encoding('UTF-8'));
+
+        return $qrCode;
     }
-
-    public function generateQrCode() : PngResult
-    {
-        return $this->builder
-            ->size(400)
-            ->margin(20)
-            ->build();
-    }
-
-
 }

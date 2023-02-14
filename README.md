@@ -1,23 +1,47 @@
-##Require
+# Require
 
-- Symfony
+- Symfony 6.1
 - Php 8.1
-- Mailer (mailHog)
+- Composer
+- Mailer (mailHog : https://github.com/mailhog/MailHog/releases)
 
-#Getting started
+## Getting started
 
 - Clone the project
 - Créer votre db (php bin/console d:d:c)
-- Créer les migrations (php bin/console make:migration)
-- Lancer les migration (php bin/console d:m:m)
+- Créer les migrations 
+ ```txt
+php bin/console make:migration
+```
+- Lancer les migration 
+ ```txt
+php bin/console doctrine:make:migrations
+```
+- Créer un fichier .env.local
+- Lancer le serveur :
+```txt
+Symfony serve (il faut installer le cli symfony)
+``` 
+ 
+  Voici un exemple de fichier .env.local: 
 
+```txt
+ DATABASE_URL="mysql://root:@127.0.0.1:3306/cook?serverVersion=5.7"
+ MAILER_DSN=smtp://localhost:1025/
+```
 
-#Récuperer la data de l'api pour remplir la table user
+## Récuperer la data de l'api pour remplir la table user
 
-- lancer la command php bin/console app:import-user 
+- lancer la command php : 
+```txt
+  php bin/console app:import-user 
+```
 
-#Recevoir les mails en local
+## Recevoir les mails en local
 
 - configurer le port smtp  dans le fichier .env.local, la variable d'environnement est MAILER_DNS (il faut le créer)
-- lancer les workers, il faut les lancer car les mails sont asynchrones (php bin/console messenger:consume async -vv)
+- lancer les workers, il faut les lancer car les mails sont asynchrones 
+ ```txt
+  php bin/console messenger:consume async -vv
+```
 - lancer votre mailer, si vous utilisez mailHog il faut seulement écrire mailhog dans le terminal.
