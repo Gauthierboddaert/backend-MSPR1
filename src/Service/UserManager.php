@@ -4,16 +4,23 @@ namespace App\Service;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use MongoDB\Driver\Exception\ExecutionTimeoutException;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserManager
 {
+    private UserPasswordHasherInterface $userPasswordHasher;
     private HttpClientManager $clientManager;
     private EntityManagerInterface $entityManager;
-    public function __construct(HttpClientManager $clientManager, EntityManagerInterface $entityManager)
+
+    public function __construct(
+        HttpClientManager $clientManager,
+        EntityManagerInterface $entityManager,
+        UserPasswordHasherInterface $userPasswordHasher
+    )
     {
         $this->clientManager = $clientManager;
         $this->entityManager = $entityManager;
+        $this->userPasswordHasher = $userPasswordHasher;
     }
 
     public function createUserFromApi() : bool
@@ -28,14 +35,13 @@ class UserManager
             try {
 
                 $cp = $user['company']['companyName'] ?? '';
-                $cp = $user['createdAt'] ?? new \DateTimeImmutable();
                 $email = $user['email'] ?? '';
                 $firstName = $user['firstName'] ?? '';
                 $userName = $user['username'] ?? '';
                 $lastName = $user['lastName'] ?? '';
                 $user = new User();
-                $user->setPassword('coucou');
-                $user->setRoles(['user']);
+                $user->setPassword($this->userPasswordHasher->hashPassword($user,'coucou'));
+                $user->setRoles(['IS_AUTHENTICATED_FULLY']);
                 $user->setCompagnyName($cp);
                 $user->setCreatedAt(new \DateTimeImmutable());
                 $user->setEmail($email);

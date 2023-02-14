@@ -19,7 +19,6 @@ class insertUserInDb extends Command
         $this->userManager = $userManager;
     }
 
-    // the command description shown when running "php bin/console list"
     protected static $defaultDescription = 'insert user in db from api';
 
     // ...
