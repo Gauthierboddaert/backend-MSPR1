@@ -1,33 +1,24 @@
 # Require
 
-- Symfony 6.1 (https://symfony.com/download)
-- Php 8.1 (installer Wamp pour le moment, on va passer sous docker pe)
-- Composer (Composer : https://getcomposer.org/download/)
-- Mailer (mailHog : https://github.com/mailhog/MailHog/releases)
+- docker
 
 ## Getting started
 
 - Clone the project
-- Lancer la commande : 
+- Lancer docker :
 ```txt
+ docker compose up -d 
+```
+- Ouvrer votre container php et lancer les commandes suivantes : 
+```txt
+ docker compose exec php bash -l
  composer install
+ php bin/console d:d:c
+ php bin/console make:migration
+ php bin/console doctrine:make:migrations
 ```
-- Créer votre db (php bin/console d:d:c)
-- Créer les migrations 
- ```txt
-php bin/console make:migration
-```
-- Lancer les migration 
- ```txt
-php bin/console doctrine:make:migrations
-```
-- Créer un fichier .env.local
-- Lancer le serveur :
-```txt
-Symfony serve (il faut installer le cli symfony)
-``` 
- 
-  Voici un exemple de fichier .env.local: 
+- Créer un fichier .env.local 
+- Voici un exemple de fichier .env.local: 
 
 ```txt
  DATABASE_URL="mysql://root:@127.0.0.1:3306/cook?serverVersion=5.7"
