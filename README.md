@@ -5,6 +5,10 @@
 ## Getting started
 
 - Clone the project
+- Si c'est la première fois que vous lancer le prochain il faut build le container (vous pouvez le lancer en même temps) : 
+```txt
+ docker compose up -d --build
+```
 - Lancer docker :
 ```txt
  docker compose up -d 
