@@ -30,6 +30,7 @@ class MailerManager extends AbstractController
                 array('qrcode' => $this->qrCodeGeneratorManager->generateQrCode($user))
             ));
 
+
         $mailer->send($email);
 
 
