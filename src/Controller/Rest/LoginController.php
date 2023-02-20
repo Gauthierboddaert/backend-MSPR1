@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/api/login')]
 class LoginController extends AbstractController
 {
     private MailerManager $mailerManager;
@@ -23,8 +22,7 @@ class LoginController extends AbstractController
         $this->mailerManager = $mailerManager;
         $this->userRepository = $userRepository;
     }
-
-    #[Route('/', name: 'app_login', methods: 'POST')]
+    #[Route('/api/login', name: 'app_login', methods: 'POST')]
     public function index(Request $request, MailerInterface $mailer): JsonResponse
     {
         if(empty($request->getContent()))
@@ -37,3 +35,4 @@ class LoginController extends AbstractController
         return new JsonResponse('Email envoyer');
     }
 }
+
