@@ -25,11 +25,11 @@
 - Voici un exemple de fichier .env.local: 
 
 ```txt
- DATABASE_URL="mysql://root:@127.0.0.1:3306/cook?serverVersion=5.7"
- MAILER_DSN=smtp://localhost:1025/
- JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
- JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
- JWT_PASSPHRASE=coucou
+DATABASE_URL="mysql://root:root@mysql:3306/backend-MSPR1?serverVersion=5.7"
+MAILER_DSN=smtp://maildev:1025
+JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
+JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
+JWT_PASSPHRASE=coucou
 ```
 
 ## Récuperer la data de l'api pour remplir la table user
