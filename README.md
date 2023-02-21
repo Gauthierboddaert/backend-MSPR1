@@ -1,33 +1,35 @@
 # Require
 
-- Symfony 6.1
-- Php 8.1
-- Composer
-- Mailer (mailHog : https://github.com/mailhog/MailHog/releases)
+- docker
 
 ## Getting started
 
 - Clone the project
-- Créer votre db (php bin/console d:d:c)
-- Créer les migrations 
- ```txt
-php bin/console make:migration
-```
-- Lancer les migration 
- ```txt
-php bin/console doctrine:make:migrations
-```
-- Créer un fichier .env.local
-- Lancer le serveur :
+- Si c'est la première fois que vous lancer les container docker il faut build le container (vous pouvez le lancer en même temps) : 
 ```txt
-Symfony serve (il faut installer le cli symfony)
-``` 
- 
-  Voici un exemple de fichier .env.local: 
+ docker compose up -d --build
+```
+- Lancer docker :
+```txt
+ docker compose up -d 
+```
+- Ouvrer votre container php et lancer les commandes suivantes : 
+```txt
+ docker compose exec php bash -l
+ composer install
+ php bin/console d:d:c
+ php bin/console make:migration
+ php bin/console doctrine:make:migrations
+```
+- Créer un fichier .env.local 
+- Voici un exemple de fichier .env.local: 
 
 ```txt
- DATABASE_URL="mysql://root:@127.0.0.1:3306/cook?serverVersion=5.7"
- MAILER_DSN=smtp://localhost:1025/
+DATABASE_URL="mysql://root:root@mysql:3306/backend-MSPR1?serverVersion=5.7"
+MAILER_DSN=smtp://maildev:1025
+JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
+JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
+JWT_PASSPHRASE=coucou
 ```
 
 ## Récuperer la data de l'api pour remplir la table user
