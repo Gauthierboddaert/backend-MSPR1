@@ -7,11 +7,18 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Mailer\Mailer;
 
 
-class MailerManagerTest extends KernelTestCase
+class HttpClientManagerTest extends KernelTestCase
 {
     /** @test */
-    public function testSomething()
+    public function TestGetALlInformation()
     {
         $this->assertEquals(1, 1);
     }
+
+    /** @test */
+    public function TestGetInformationById()
+    {
+        $this->assertEquals(1, 1);
+    }
+
 }

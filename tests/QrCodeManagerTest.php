@@ -2,15 +2,13 @@
 
 namespace App\Tests\Service;
 
-use App\Service\MailerManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Mailer\Mailer;
 
 
-class MailerManagerTest extends KernelTestCase
+class QrCodeManagerTest extends KernelTestCase
 {
     /** @test */
-    public function testSomething()
+    public function TestgenerateQrCode()
     {
         $this->assertEquals(1, 1);
     }
