@@ -32,8 +32,5 @@ class MailerManager extends AbstractController
 
 
         $mailer->send($email);
-
-
-
     }
 }
