@@ -1,16 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API de gestion de produits",
-        "description": "API permettant de gérer les produits d'un site e-commerce.",
-        "contact": {
-            "name": "Service clients",
-            "email": "contact@monsite.com"
-        },
-        "license": {
-            "name": "Licence propriétaire",
-            "url": "https://monsite.com/licence-proprietaire"
-        },
+        "title": "Swagger PayeTonKawa",
+        "description": "Cette api permet de récupérer les customers et les products d'une autre API pour l'application paye ton kawa.",
         "version": "1.0.0"
     },
     "servers": [
@@ -20,10 +12,221 @@
         }
     ],
     "paths": {
-        "/api/products": {}
+        "/api/customers/": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get all customer",
+                "operationId": "8313b77b51c441b111a94c58157f8284",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "path",
+                        "description": "get all customers"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customers"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Customer not found"
+                    }
+                }
+            }
+        },
+        "/api/cutomers/{id}": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get cutomer by ID",
+                "operationId": "4bd6e47ae292234ccc02c8f1bf12bff7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of product to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customers"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Customer not found"
+                    }
+                }
+            }
+        },
+        "/api/login/": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Login",
+                "operationId": "4c996d0018775efe7ec8447d02a63d92",
+                "parameters": [
+                    {
+                        "name": "login",
+                        "in": "path",
+                        "description": "login user"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "user not found"
+                    }
+                }
+            }
+        },
+        "/api/products/": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get all products",
+                "operationId": "724a48d6f1a8f7bb068d549149fb8bff",
+                "parameters": [
+                    {
+                        "name": "products",
+                        "in": "path",
+                        "description": "get all products"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    }
+                }
+            }
+        },
+        "/api/products/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get product by ID",
+                "operationId": "0d8b7afd4c35d5ddd698856bef02b74f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of product to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    }
+                }
+            }
+        }
     },
     "components": {
         "schemas": {
+            "Customers": {
+                "description": "Un customer",
+                "properties": {
+                    "id": {
+                        "description": "L'identifiant unique du produit",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Le nom du produit",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "La description du produit",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "Le prix du produit",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "created_at": {
+                        "description": "La date de création du produit",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "La date de dernière modification du produit",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "category": {
+                        "description": "La catégorie du produit",
+                        "properties": {
+                            "id": {
+                                "description": "L'identifiant unique de la catégorie",
+                                "type": "integer"
+                            },
+                            "name": {
+                                "description": "Le nom de la catégorie",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
             "Product": {
                 "description": "Un produit",
                 "properties": {
@@ -72,11 +275,5 @@
                 "type": "object"
             }
         }
-    },
-    "tags": [
-        {
-            "name": "Product",
-            "description": "Endpoints pour la gestion des produits"
-        }
-    ]
+    }
 }
