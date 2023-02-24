@@ -16,5 +16,5 @@ jobs:
   php-unit:
     runs-on: ubuntu-latest
     steps:
-      name: Run PHPUnit tests
-      run: php bin/phpunit
+      - name: PHPUnit tests
+        uses: php-actions/phpunit@v3
