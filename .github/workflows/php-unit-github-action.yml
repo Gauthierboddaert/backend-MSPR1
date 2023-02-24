@@ -16,11 +16,5 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-interaction --no-progress --no-suggest
 
-      - name: Create the database
-        run: php bin/console doctrine:database:create --env=test --no-interaction
-
-      - name: Run database migrations
-        run: php bin/console doctrine:migrations:migrate --env=test --no-interaction
-
       - name: Run PHPUnit tests
         run: php bin/phpunit
