@@ -13,11 +13,4 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
 
-  php-unit:
-    steps:
-      - runs-on: ubuntu-latest
-      - name: PHPUnit tests
-        uses: php-actions/phpunit@v3
-        with:
-            configuration: "../../phpunit.xml"
-            memory_limit: "256M"
+
