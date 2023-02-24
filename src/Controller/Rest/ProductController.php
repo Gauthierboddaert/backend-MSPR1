@@ -107,7 +107,7 @@ class ProductController extends AbstractController
      *     )
      * )
      */
-    #[Route('/api/products', name: 'app_product', methods: ['GET'])]
+    #[Route('/', name: 'app_product', methods: ['GET'])]
     public function index(): JsonResponse
     {
         return new JsonResponse($this->httpClientManager->getAllInformation('/products'));
