@@ -16,8 +16,5 @@ jobs:
   php-unit:
     runs-on: ubuntu-latest
     steps:
-      - name: PHPUnit tests
-        uses: php-actions/phpunit@v3
-        with:
-            configuration: "./phpunit.xml.dist"
-            memory_limit: "256M"
+      name: Run PHPUnit tests
+      run: php bin/phpunit
