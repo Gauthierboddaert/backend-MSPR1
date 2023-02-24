@@ -5,6 +5,7 @@ namespace App\Controller\Rest;
 use App\Repository\UserRepository;
 use App\Service\HttpClientManager;
 use App\Service\MailerManager;
+use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,6 +23,28 @@ class LoginController extends AbstractController
         $this->mailerManager = $mailerManager;
         $this->userRepository = $userRepository;
     }
+
+    /**
+     * @OA\Post(
+     *     path="/api/login/",
+     *     summary="Login",
+     *     tags={"Login"},
+     *     @OA\Parameter(
+     *         name="login",
+     *         in="path",
+     *         description="login user"
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="successful operation",
+     *         @OA\JsonContent(ref="#/components/schemas/Product")
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="user not found"
+     *     )
+     * )
+     */
     #[Route('/api/login', name: 'app_login', methods: 'POST')]
     public function index(Request $request, MailerInterface $mailer): JsonResponse
     {
