@@ -4,6 +4,7 @@ on: [push]
 jobs:
   php-unit:
     steps:
+      - runs-on: ubuntu-latest
       - name: PHPUnit tests
         uses: php-actions/phpunit@v3
         with:
