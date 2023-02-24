@@ -1,0 +1,11 @@
+name: php-unit-github-actions
+run-name: ${{ github.actor }} is launching phpunit github action
+on: [push]
+jobs:
+  php-unit:
+    steps:
+      - name: PHPUnit tests
+        uses: php-actions/phpunit@v3
+        with:
+            configuration: "../../phpunit.xml"
+            memory_limit: "256M"
