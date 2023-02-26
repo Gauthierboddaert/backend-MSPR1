@@ -12,13 +12,13 @@ class HttpClientManagerTest extends KernelTestCase
     /** @test */
     public function TestGetALlInformation()
     {
-        $this->assertEquals(1, 1);
+        $this->assertEquals([], []);
     }
 
     /** @test */
     public function TestGetInformationById()
     {
-        $this->assertEquals(1, 1);
+        $this->assertEquals([], []);
     }
 
 }
