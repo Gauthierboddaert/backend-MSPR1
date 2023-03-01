@@ -17,7 +17,6 @@ class HttpClientManager
 
     public function getALlInformation(string $endPoint): array
     {
-
         $response = $this->client->request(
             'GET',
             $this->baseApiUrl.$endPoint
@@ -36,7 +35,6 @@ class HttpClientManager
         if($response->getStatusCode() === 500 || $response->getStatusCode() === 400 ){
             return [$messageError];
         };
-
 
         return $response->toArray();
     }
