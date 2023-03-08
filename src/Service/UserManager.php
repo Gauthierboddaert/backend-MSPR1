@@ -27,13 +27,9 @@ class UserManager
     {
         $data = $this->clientManager->getALlInformation('/customers');
 
-        /**
-         * @var User $user
-         */
         foreach ($data as $user)
         {
             try {
-
                 $cp = $user['company']['companyName'] ?? '';
                 $email = $user['email'] ?? '';
                 $firstName = $user['firstName'] ?? '';
@@ -54,7 +50,6 @@ class UserManager
                 dd($exception->getMessage());
                 return false;
             }
-
         }
 
         $this->entityManager->flush();

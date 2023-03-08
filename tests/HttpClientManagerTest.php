@@ -2,9 +2,12 @@
 
 namespace App\Tests\Service;
 
+use App\Service\HttpClientManager;
 use App\Service\MailerManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Mailer\Mailer;
+use Symfony\Contracts\HttpClient\ResponseInterface;
+
 
 
 class HttpClientManagerTest extends KernelTestCase
@@ -12,13 +15,14 @@ class HttpClientManagerTest extends KernelTestCase
     /** @test */
     public function TestGetALlInformation()
     {
-        $this->assertEquals(1, 1);
+        $httpClientManager = static::getContainer()->get(HttpClientManager::class);
+        $this->assertInstanceOf(ResponseInterface::class, $httpClientManager->getALlInformation('/customers'));
     }
 
     /** @test */
-    public function TestGetInformationById()
+    public function TestGetInformation()
     {
-        $this->assertEquals(1, 1);
+        $httpClientManager = static::getContainer()->get(HttpClientManager::class);
+        $this->assertInstanceOf(ResponseInterface::class, $httpClientManager->getInformationById('/customers', 3));
     }
-
 }
