@@ -2,10 +2,11 @@
 
 namespace App\Service;
 
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
-class HttpClientManager
+class HttpClientManager implements HttpClientManagerInterface
 {
     private HttpClientInterface $client;
 
@@ -22,7 +23,7 @@ class HttpClientManager
         );
     }
 
-    public function getInformationById(string $endPoint, int $id, string $messageError = 'produit introuvable'): ResponseInterface
+    public function getInformationById(string $endPoint, int $id): ResponseInterface
     {
         try{
             return $this->client->request(

@@ -19,8 +19,6 @@ class insertUserInDb extends Command
         $this->userManager = $userManager;
     }
 
-    protected static $defaultDescription = 'insert user in db from api';
-
     // ...
     protected function configure(): void
     {

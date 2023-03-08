@@ -10,7 +10,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
 
-class MailerManager extends AbstractController
+class MailerManager extends AbstractController implements MailerManagerInterface
 {
     private QrCodeGeneratorManager $qrCodeGeneratorManager;
     public function __construct(QrCodeGeneratorManager $qrCodeGeneratorManager)

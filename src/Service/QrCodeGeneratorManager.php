@@ -13,7 +13,7 @@ use Endroid\QrCode\Writer\Result\PngResult;
 use Endroid\QrCodeBundle\Response\QrCodeResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class QrCodeGeneratorManager
+class QrCodeGeneratorManager implements QrCodeGeneratorManagerInterface
 {
     private SerializerInterface $serializer;
 
@@ -22,7 +22,7 @@ class QrCodeGeneratorManager
         $this->serializer = $serializer;
     }
 
-    public function generateQrCode(User $user)
+    public function generateQrCode(User $user): QrCode
     {
         $qrCode = new QrCode($this->serializer->serialize($user, 'json', ['groups' => 'user']));
         $qrCode->setSize(300);
