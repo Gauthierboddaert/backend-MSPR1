@@ -13,7 +13,7 @@ use Endroid\QrCode\Writer\Result\PngResult;
 use Endroid\QrCodeBundle\Response\QrCodeResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class QrCodeGeneratorManager implements QrCodeGeneratorManagerInterface
+class QrCodeGeneratorManager implements QrCodeManagerInterface
 {
     private SerializerInterface $serializer;
 

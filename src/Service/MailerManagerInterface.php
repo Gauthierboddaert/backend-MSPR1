@@ -9,5 +9,5 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 interface MailerManagerInterface
 {
-    public function sendMail(MailerInterface $mailer, User $user): void;
+    public function sendEmail(MailerInterface $mailer, User $user): void;
 }
