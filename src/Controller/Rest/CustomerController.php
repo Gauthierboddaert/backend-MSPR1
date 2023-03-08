@@ -104,7 +104,7 @@ class CustomerController extends AbstractController
     #[Route('/', name: 'app_customers', methods: 'GET')]
     public function index(MailerInterface $mailer) : JsonResponse
     {
-        return new JsonResponse($this->httpClientManager->getALlInformation('/customers'));
+        return new JsonResponse($this->httpClientManager->getALlInformation('/customers')->toArray());
     }
 
     /**
@@ -136,6 +136,6 @@ class CustomerController extends AbstractController
     #[Route('/{id}', name: 'app_customers_by_id', methods: 'GET')]
     public function getCustomersById(int $id) : JsonResponse
     {
-        return new JsonResponse($this->httpClientManager->getInformationById('/customers', $id, 'Client introuvable'));
+        return new JsonResponse($this->httpClientManager->getInformationById('/customers', $id, 'Client introuvable')->toArray());
     }
 }

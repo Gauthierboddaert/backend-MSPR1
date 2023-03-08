@@ -3,39 +3,34 @@
 namespace App\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class HttpClientManager
 {
     private HttpClientInterface $client;
-    private string $baseApiUrl;
 
-    public function __construct(HttpClientInterface $client, string $baseApiUrl)
+    public function __construct(HttpClientInterface $baseUriClient)
     {
-        $this->client = $client;
-        $this->baseApiUrl = $baseApiUrl;
+        $this->client = $baseUriClient;
     }
 
-    public function getALlInformation(string $endPoint): array
+    public function getALlInformation(string $endPoint): ResponseInterface
     {
-        $response = $this->client->request(
+        return $this->client->request(
             'GET',
-            $this->baseApiUrl.$endPoint
+            $endPoint
         );
-
-        return $response->toArray();
     }
 
-    public function getInformationById(string $endPoint, int $id, string $messageError = 'produit introuvable'): array
+    public function getInformationById(string $endPoint, int $id, string $messageError = 'produit introuvable'): ResponseInterface
     {
-        $response = $this->client->request(
-            'GET',
-            $this->baseApiUrl.$endPoint.'/'.$id
-        );
-
-        if($response->getStatusCode() === 500 || $response->getStatusCode() === 400 ){
-            return [$messageError];
-        };
-
-        return $response->toArray();
+        try{
+            return $this->client->request(
+                'GET',
+                $endPoint.'/'.$id
+            );
+        }catch (\Exception $exception){
+            throw new \Exception($exception);
+        }
     }
 }

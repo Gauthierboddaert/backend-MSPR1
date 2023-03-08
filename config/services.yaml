@@ -8,8 +8,6 @@ parameters:
 services:
     # default configuration for services in *this* file
     _defaults:
-        bind:
-            $baseApiUrl: 'https://615f5fb4f7254d0017068109.mockapi.io/api/v1'
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 

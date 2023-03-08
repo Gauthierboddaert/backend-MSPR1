@@ -110,7 +110,7 @@ class ProductController extends AbstractController
     #[Route('/', name: 'app_product', methods: ['GET'])]
     public function index(): JsonResponse
     {
-        return new JsonResponse($this->httpClientManager->getAllInformation('/products'));
+        return new JsonResponse($this->httpClientManager->getAllInformation('/products')->toArray());
     }
 
 
@@ -143,6 +143,6 @@ class ProductController extends AbstractController
     #[Route('/{id}', name: 'app_product_by_id', methods: 'GET')]
     public function getProductById(int $id) : JsonResponse
     {
-        return new JsonResponse($this->httpClientManager->getInformationById('/products', $id));
+        return new JsonResponse($this->httpClientManager->getInformationById('/products', $id)->toArray());
     }
 }
