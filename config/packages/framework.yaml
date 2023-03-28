@@ -3,7 +3,7 @@ framework:
     http_client:
         scoped_clients:
             baseUri.client:
-                base_uri: 'https://615f5fb4f7254d0017068109.mockapi.io/api/v1'
+                base_uri: 'https://6423384a77e7062b3e2de9dd.mockapi.io/api/v1/'
 
     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
