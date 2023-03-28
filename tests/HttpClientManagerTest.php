@@ -23,6 +23,6 @@ class HttpClientManagerTest extends KernelTestCase
     public function TestGetInformation()
     {
         $httpClientManager = static::getContainer()->get(HttpClientManager::class);
-        $this->assertInstanceOf(ResponseInterface::class, $httpClientManager->getInformationById('/customers', 3));
+        $this->assertInstanceOf(ResponseInterface::class, $httpClientManager->getInformationById('/customers', 7));
     }
 }
