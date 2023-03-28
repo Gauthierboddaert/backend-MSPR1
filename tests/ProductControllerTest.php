@@ -21,7 +21,7 @@ class ProductControllerTest extends KernelTestCase
     public function TestGetInformationProductById()
     {
         $httpClientManager = static::getContainer()->get(HttpClientManager::class);
-        $this->assertEquals(200, $httpClientManager->getInformationById('/products',1)->getStatusCode());
+        $this->assertEquals(200, $httpClientManager->getInformationById('/products',3)->getStatusCode());
     }
 
     /** @test */
