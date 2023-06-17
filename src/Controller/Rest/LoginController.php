@@ -56,7 +56,7 @@ class LoginController extends AbstractController
         $user = $this->userRepository->findOneBy(['email' => $request->toArray()['email']]);
         if(null === $user)
         {
-            return new JsonResponse("Cette adresse email ne correspond à aucun compte");
+            return new JsonResponse("Cette adresse email ne correspond a aucun compte");
         }
 
         $this->mailerManager->sendEmail($mailer, $user);
