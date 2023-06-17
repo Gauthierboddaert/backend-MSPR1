@@ -47,3 +47,12 @@ JWT_PASSPHRASE=coucou
   php bin/console messenger:consume async -vv
 ```
 - lancer votre mailer, si vous utilisez mailHog il faut seulement écrire mailhog dans le terminal.
+
+
+## Accéder au swagger
+
+- http://localhost:8083
+
+## Accéder à la boite mail
+
+- http://localhost:8081
