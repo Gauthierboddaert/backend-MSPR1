@@ -25,7 +25,7 @@ class UserManager
 
     public function createUserFromApi() : bool
     {
-        $data = $this->clientManager->getALlInformation('/customers');
+        $data = $this->clientManager->getALlInformation('/customers')->toArray();
 
         foreach ($data as $user)
         {

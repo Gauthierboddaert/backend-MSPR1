@@ -3,12 +3,10 @@
 namespace App\Tests\Service;
 
 use App\Service\HttpClientManager;
-use App\Service\MailerManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Mailer\Mailer;
 
 
-class CustomersControllerTest extends KernelTestCase
+final class CustomersControllerTest extends KernelTestCase
 {
     /** @test */
     public function TestGetALlInformationCustomers()
